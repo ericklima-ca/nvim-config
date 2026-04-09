@@ -1,0 +1,9 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro.lua
+foo.*
+*.log
+data
+/lazy-report.txt
