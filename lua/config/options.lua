@@ -8,5 +8,5 @@ vim.opt.relativenumber = false
 -- Editing: Allow cursor movement across lines with certain keys
 vim.opt.whichwrap:append("<,>,[,],h,l")
 
--- Hyohens are keywords characters
+-- Hyphens are keywords characters
 vim.opt.iskeyword:append("-")
