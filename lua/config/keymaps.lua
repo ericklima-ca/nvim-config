@@ -32,18 +32,6 @@ vim.keymap.set("n", "C", '"_C', { desc = "Change to end of line without yanking"
 vim.keymap.set("n", "x", '"_x', { desc = "Delete character without yanking" })
 vim.keymap.set("v", "x", '"_x', { desc = "Delete character without yanking" })
 
-local map = vim.keymap.set
-local is_mac = vim.uv.os_uname().sysname == "Darwin"
-
-if is_mac then
-  -- Use Command (D) + Arrows for resizing on Mac
-  -- This leaves the Option key free for special characters
-  map("n", "<D-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-  map("n", "<D-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-  map("n", "<D-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-  map("n", "<D-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
-end
-
 -- Alt + z to toggle wrap nowrap
 vim.keymap.set("n", "<M-z>", function()
   if vim.wo.wrap then

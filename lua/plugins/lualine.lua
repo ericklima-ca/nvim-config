@@ -102,9 +102,8 @@ return {
       extensions = { "neo-tree", "lazy", "fzf" },
     }
 
-    -- do not add trouble symbols if aerial is enabled
-    -- And allow it to be overriden for some buffer types (see autocmds)
-    if vim.g.trouble_lualine and LazyVim.has("trouble.nvim") then
+    -- add trouble symbols
+    if LazyVim.has("trouble.nvim") then
       local trouble = require("trouble")
       local symbols = trouble.statusline({
         mode = "symbols",
