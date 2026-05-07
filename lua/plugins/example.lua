@@ -35,6 +35,8 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "tokyonight",
+      transparent = true,
+
     },
   },
 
@@ -111,28 +113,28 @@ return {
   },
 
   -- the opts function can also be used to change the default opts:
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function(_, opts)
-      table.insert(opts.sections.lualine_x, {
-        function()
-          return "😄"
-        end,
-      })
-    end,
-  },
-
-  -- or you can return new options to override all the defaults
-  {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return {
-        --[[add your custom lualine config here]]
-      }
-    end,
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   event = "VeryLazy",
+  --   opts = function(_, opts)
+  --     table.insert(opts.sections.lualine_x, {
+  --       function()
+  --         return "😄"
+  --       end,
+  --     })
+  --   end,
+  -- },
+  --
+  -- -- or you can return new options to override all the defaults
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   event = "VeryLazy",
+  --   opts = function()
+  --     return {
+  --       --[[add your custom lualine config here]]
+  --     }
+  --   end,
+  -- },
 
   -- update mason.nvim to new repo
   {
@@ -185,7 +187,7 @@ return {
   {
     "sphamba/smear-cursor.nvim",
     opts = {
-      cursor_color = "#ff4000",
+      cursor_color = "none",
       particles_enabled = true,
       stiffness = 0.5,
       trailing_stiffness = 0.2,
@@ -205,5 +207,61 @@ return {
       particle_gravity = -50,
       min_distance_emit_particles = 0,
     },
-  }
+  },
+  {
+  "sindrets/diffview.nvim",
+  cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+  opts = {
+    diff_binaries = false,
+    enhanced_diff_hl = true, -- Great for your Data Science/Code reviews
+    hooks = {
+      diff_buf_read = function(bufnr)
+        -- Custom options for diff buffers
+        vim.opt_local.wrap = false
+        vim.opt_local.colorcolumn = ""
+      end,
+    },
+  },
+  keys = {
+    { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+    { "<leader>gh", "<cmd>DiffviewFileHistory %", desc = "Diffview File History" },
+  },
+},
+-- {
+--   "xiyaowong/transparent.nvim",
+--   lazy = false,
+--   priority = 1000, -- Ensure it loads before other UI plugins
+--   opts = {
+--     -- Additional groups you might want transparent
+--     extra_groups = {
+--       "NormalFloat", -- For Lazy/Mason/LspInfo floating windows
+--       "NvimTreeNormal", -- If you use NvimTree
+--       "NeoTreeNormal", -- LazyVim default file explorer
+--       "NeoTreeNormalNC",
+--     },
+--     exclude_groups = {}, -- Groups you want to keep their background
+--   },
+--   config = function(_, opts)
+--     require("transparent").setup(opts)
+--
+--     -- Optional: Clear prefixes for common LazyVim plugins
+--     local transparent = require("transparent")
+--     transparent.clear_prefix("NeoTree")
+--     transparent.clear_prefix("lualine")
+--   end,
+--   keys = {
+--     { "<leader>uT", "<cmd>TransparentToggle<cr>", desc = "Toggle Transparency" },
+--   },
+-- },
+  {
+  "folke/tokyonight.nvim",
+  lazy = false,
+  opts = {
+    transparent = true,
+    styles = {
+      sidebars = "transparent",
+      floats = "transparent",
+    },
+  },
+},
 }
