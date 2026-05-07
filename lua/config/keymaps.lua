@@ -11,10 +11,9 @@ vim.keymap.set("n", "<M-t>", function()
     win = {
       style = "terminal",
       relative = "editor",
-      width = 0.80, -- 80% of editor width
-      height = 0.20, -- 20% of editor height
-      row = 0.15, -- center vertically
-      col = 0.10, -- center horizontally
+      position = "float",
+      width = 0.7, -- 70% of editor width
+      height = 0.7, -- 70% of editor height
     },
   })
 end, { desc = "Toggle Floating Terminal (80x20%)" })
